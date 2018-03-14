@@ -1,0 +1,18 @@
+{
+  "root": true,
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true,
+    "mocha": true
+  },
+  "ecmaFeatures": {
+    "modules": true
+  },
+  "extends": [
+    "airbnb"
+  ],
+  "rules": {
+    "comma-dangle": "off"
+  }
+}
