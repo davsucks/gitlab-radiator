@@ -16,12 +16,14 @@ describe('routes', () => {
     });
   });
 
-  xdescribe('fetchPipelinesForProject', () => {
-    it('', () => {
-      const projectData = routes.fetchPipelinesForProject();
-      return expect(projectData)
-        .to.eventually.have.property('name')
-        .that.is.equal(projectName);
+  describe('fetchPipelinesForProject', () => {
+    it('should have a green master be green', (done) => {
+      routes.fetchPipelinesForProject(projectId).then((pipelineData) => {
+        const masterHasGreenProject = pipelineData.filter((pipeline) => pipeline.ref === 'master')
+          .some(pipeline => pipeline.status === 'success');
+        expect(masterHasGreenProject).to.equal(true);
+        done();
+      }).catch(done);
     });
   });
 });
