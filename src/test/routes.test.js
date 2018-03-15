@@ -19,7 +19,7 @@ describe('routes', () => {
   describe('fetchPipelinesForProject', () => {
     it('should have a green master be green', (done) => {
       routes.fetchPipelinesForProject(projectId).then((pipelineData) => {
-        const masterHasGreenProject = pipelineData.filter((pipeline) => pipeline.ref === 'master')
+        const masterHasGreenProject = pipelineData.filter(pipeline => pipeline.ref === 'master')
           .some(pipeline => pipeline.status === 'success');
         expect(masterHasGreenProject).to.equal(true);
         done();
