@@ -3,22 +3,25 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
-  state = {
-    response: ''
-  };
-
-  componentDidMount() {
-    this.callApi()
-      .then(res => this.setState({ response: res.express }))
-      .catch(console.error);
-  }
-
-  callApi = async () => {
+  static async callApi() {
     const response = await fetch('/api/hello');
     const body = await response.json();
     if (response.status !== 200) throw Error(body.message);
     return body;
-  };
+  }
+
+  constructor() {
+    super();
+    this.state = {
+      response: ''
+    };
+  }
+
+  componentDidMount() {
+    App.callApi()
+      .then(res => this.setState({ response: res.express }))
+      .catch(console.error);
+  }
 
   render() {
     return (
