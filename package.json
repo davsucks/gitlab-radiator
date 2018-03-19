@@ -6,7 +6,7 @@
     "client": "cd client && yarn start",
     "server": "nodemon server.js",
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
-    "test": "mocha src/test/** --require babel-register"
+    "test": "mocha src/test/** --require babel-register && cd client && yarn test"
   },
   "dependencies": {
     "client": "file:client",
