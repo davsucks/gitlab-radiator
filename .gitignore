@@ -7,7 +7,7 @@
 /coverage
 
 # production
-/build
+**/build
 
 .idea/
 .gitlab-access-token
