@@ -16,6 +16,8 @@ class Project extends Component {
   }
 
   componentDidMount() {
+    const tenSecondsInMillis = 10 * 1000;
+    setInterval(this.fetchPipelines, tenSecondsInMillis);
     this.fetchPipelines();
   }
 

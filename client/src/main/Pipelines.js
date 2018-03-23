@@ -20,7 +20,7 @@ export default class Pipelines extends Component {
     return (
         <Fragment>
           {pipelines.map(pipeline => (
-              <Pipeline pipeline={pipeline}/>
+              <Pipeline key={pipeline.id} pipeline={pipeline}/>
           ))}
         </Fragment>
     )

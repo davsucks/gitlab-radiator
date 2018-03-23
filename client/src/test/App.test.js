@@ -15,7 +15,7 @@ describe('<App />', () => {
     wrapper = shallow(<App projects={ projects }/>);
   });
 
-  it.only('renders the first <Project/> with the name and id', () => {
+  it('renders the first <Project/> with the name and id', () => {
     expect(wrapper.contains(<Project name={'Test Project'} id={'1234'} />)).to.equal(true);
   });
 
@@ -24,6 +24,6 @@ describe('<App />', () => {
   });
 
   it('renders the second <Project/> with attributes', () => {
-    expect(wrapper.contains(<Project name={'Second Project'} id={'3456'} />)).to.equal(true);
+    expect(wrapper.contains(<Project name={'Second project'} id={'3456'} />)).to.equal(true);
   })
 });
