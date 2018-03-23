@@ -1,19 +1,24 @@
 import chai, { expect } from 'chai';
 import chaiAsPromised from 'chai-as-promised';
+import fetchMock from 'fetch-mock';
 import { config, routes } from '../main';
+import examplePipelineResponse from './examplePipelineResponse';
 
 chai.use(chaiAsPromised);
 
 describe('routes', () => {
-  const { projectId, projectName } = config.gitlab;
+  const { projectId } = config.gitlab;
 
-  describe('fetchProject', () => {
-    it('returns the project name', () => {
-      const projectData = routes.fetchProject(projectId);
-      return expect(projectData)
-        .to.eventually.have.property('name')
-        .that.is.equal(projectName);
-    });
+  before(() => {
+    fetchMock.get('*', examplePipelineResponse);
+  });
+
+  afterEach(() => {
+    fetchMock.reset();
+  });
+
+  after(() => {
+    fetchMock.restore();
   });
 
   describe('fetchPipelinesForProject', () => {
@@ -22,6 +27,14 @@ describe('routes', () => {
         const masterHasGreenProject = pipelineData.filter(pipeline => pipeline.ref === 'master')
           .some(pipeline => pipeline.status === 'success');
         expect(masterHasGreenProject).to.equal(true);
+        done();
+      }).catch(done);
+    });
+
+    it('should filter out refs that are not master', (done) => {
+      routes.fetchPipelinesForProject(projectId).then((pipelines) => {
+        const responseOnlyHasMasterPipelines = pipelines.every(pipeline => pipeline.ref === 'master');
+        expect(responseOnlyHasMasterPipelines).to.equal(true);
         done();
       }).catch(done);
     });
