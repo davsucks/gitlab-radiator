@@ -2,11 +2,14 @@ import { expect } from 'chai';
 import { config } from '../main';
 
 describe('config', () => {
-
   describe('gitlab configuration', () => {
     const gitlabConfiguration = ['projectId', 'accessToken', 'parentDomain', 'projectName'];
 
-    it('exposes necessary configuration', () => {
+    it('is an object', () => {
+      expect(config.gitlab).to.be.an('object');
+    });
+
+    it('has the necessary keys for the application to work', () => {
       expect(config.gitlab).to.have.keys(gitlabConfiguration);
     });
 
@@ -15,9 +18,5 @@ describe('config', () => {
         expect(config.gitlab[key]).to.not.be.undefined;
       })
     })
-  });
-
-  it('exposes a public configuration', () => {
-    expect(config.publicKey).to.equal('public value');
   });
 });

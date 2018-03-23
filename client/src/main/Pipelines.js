@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import Pipeline from './Pipeline';
 
 export default class Pipelines extends Component {
@@ -12,11 +12,17 @@ export default class Pipelines extends Component {
   }
 
   componentWillReceiveProps(props) {
-    this.setState(_ => ({ pipelines: props.pipelines }));
+    this.setState(() => ({ pipelines: props.pipelines }));
   }
 
   render() {
     const { pipelines } = this.state;
-    return pipelines.map(pipeline => <Pipeline pipeline={pipeline} />);
+    return (
+        <Fragment>
+          {pipelines.map(pipeline => (
+              <Pipeline pipeline={pipeline}/>
+          ))}
+        </Fragment>
+    )
   }
 }

@@ -11,14 +11,20 @@ It's exactly what it sounds like
 * Don't panic! You're missing configuration, so the tests should fail
 * Create two files:
   * `<project dir>/src/main/resources/secrets.properties`
-  * `<project dir>/client/.env`
-* For populating `secrets.properties` the tests should be sufficient enough to explain what goes in there, when you're done the tests should pass
-* For populating `.env` I didn't write tests specifically for that, but looking at config.js you just need to define two variables:
-  * `REACT_APP_GITLAB_PROJECT_NAME`
-  * `REACT_APP_GITLAB_PROJECT_ID`
+  * `<project dir>/client/secrets.js`
+* For populating `secrets.properties` see [this section](#populating-`secrets.properties`)
+* For populating `secrets.js` see [this section](#populating-`secrets.js`)
 * `$yarn test`
 * This time they should pass
 * `$yarn dev`
+
+### Populating `secrets.properties`
+* Refer to the broken tests from the previous run and fix them one by one
+
+### Populating `secrets.js`
+* Again, refer to the broken tests in the client directory and fix them one by one
+* `config.js` exposes a function called `createProject` that takes a gitlab project name and id
+* Use `createProject` in `secrets.js` to build up a list of projects to display until the tests are green and your radiator is radiant
 
 ## TODO:
 * Allow multiple project ids and display accordingly

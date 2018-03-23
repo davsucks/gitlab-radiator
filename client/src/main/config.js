@@ -1,6 +1,11 @@
+import secrets from './secrets';
+
+export function createProject(name, id) {
+  return { name, id }
+}
+
 export default {
   gitlab: {
-    projectId: process.env.REACT_APP_GITLAB_PROJECT_ID,
-    projectName: process.env.REACT_APP_GITLAB_PROJECT_NAME
+    projects: secrets.projects
   }
 };
