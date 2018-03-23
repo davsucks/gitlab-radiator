@@ -12,8 +12,7 @@ It's exactly what it sounds like
 * Create two files:
   * `<project dir>/src/main/resources/secrets.properties`
   * `<project dir>/client/secrets.js`
-* For populating `secrets.properties` see [this section](#populating-secrets.properties)
-* For populating `secrets.js` see [this section](#populating-secrets.js)
+* For populating `secrets.properties` and `secrets.js` see the appropriate sections below
 * `$yarn test`
 * This time they should pass
 * `$yarn dev`
