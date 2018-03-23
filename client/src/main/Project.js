@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Jumbotron, Col } from 'reactstrap';
+import { Badge, Col } from 'reactstrap';
 import fetch from 'node-fetch';
 import './Project.css';
 import Pipelines from './Pipelines';
@@ -32,7 +32,7 @@ class Project extends Component {
     const { name } = this.props;
     return (
         <Col className="Project" xs="auto">
-          <Jumbotron><h1>{name}</h1></Jumbotron>
+          <Badge><h1>{name}</h1></Badge>
           <p className="Project-intro">
             {this.state.response}
             <Pipelines pipelines={this.state.gitlab}/>
