@@ -5,15 +5,15 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { expect } from 'chai';
-import { App } from '../main/';
+import { Project } from '../main/';
 
 fetch.mockResponse(JSON.stringify({ express: 'Hello World' }));
 
-describe('<App />', () => {
+describe('<Project />', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow(<App projectName={'Test Application'}/>, { disableLifecycleMethods: true });
+    wrapper = shallow(<Project name={'Test Application'}/>, { disableLifecycleMethods: true });
   });
 
   it('renders the project name', () => {

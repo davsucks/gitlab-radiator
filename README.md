@@ -21,9 +21,9 @@ It's exactly what it sounds like
 * `$yarn dev`
 
 ## TODO:
-* Mention how to get a gitlab access token
 * Allow multiple project ids and display accordingly
-* Refresh projects every 10 seconds
+* Mention how to get a gitlab access token
+* Refresh projects every 10 seconds (todo: rate limits?)
 * Remove superfluous backend. Make api calls in react
 * Figure out react/prop-types eslint validation
 * Automate first-time setup?

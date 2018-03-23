@@ -1,6 +1,6 @@
-import App from './App';
+import Project from './Project';
 import config from './config';
 import Pipelines from './Pipelines';
 import Pipeline from './Pipeline';
 
-export { App, config, Pipeline, Pipelines };
+export { Project, config, Pipeline, Pipelines };
