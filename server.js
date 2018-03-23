@@ -1,8 +1,11 @@
-const express = require('express');
-const routes = require('./src/main/routes');
+import express from 'express';
+import morgan from 'morgan';
+import { routes } from './src/main';
 
 const app = express();
 const port = process.env.PORT || 5000;
+
+app.use(morgan('tiny'));
 
 app.get('/api/hello', (req, res) => {
   res.send({ express: 'Hello World' });
