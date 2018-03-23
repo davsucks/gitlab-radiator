@@ -6,9 +6,15 @@ export default class Pipelines extends Component {
     super(props);
     this.state = {
       // eslint-disable-next-line react/prop-types
-      pipelines: this.props.pipelines
+      pipelines: props.pipelines
     };
+    this.componentWillReceiveProps = this.componentWillReceiveProps.bind(this);
   }
+
+  componentWillReceiveProps(props) {
+    this.setState(_ => ({ pipelines: props.pipelines }));
+  }
+
   render() {
     const { pipelines } = this.state;
     return pipelines.map(pipeline => <Pipeline pipeline={pipeline} />);
