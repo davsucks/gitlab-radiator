@@ -1,6 +1,11 @@
-import Project from './Project';
-import config from './config';
 import Pipelines from './Pipelines';
 import Pipeline from './Pipeline';
+import Project from './Project';
+import config from './config';
 
-export { Project, config, Pipeline, Pipelines };
+export {
+  Pipeline,
+  Pipelines,
+  Project,
+  config
+};
