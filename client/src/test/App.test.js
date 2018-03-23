@@ -28,10 +28,6 @@ describe('<App />', () => {
     expect(wrapper.contains(<Project name={'Second project'} id={'3456'}/>)).to.equal(true);
   });
 
-  it('renders the projects in a container', () => {
-    expect(wrapper.find(Container).length).to.equal(1);
-  });
-
   it('renders the projects in a row', () => {
     expect(wrapper.find(Row).length).to.equal(1);
   });

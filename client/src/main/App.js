@@ -7,13 +7,11 @@ export default class App extends Component {
     const { projects } = this.props;
     return (
         <Fragment>
-          <Container>
-            <Row>
-              {projects.map(project => (
-                  <Project key={project.id} id={project.id} name={project.name}/>
-              ))}
-            </Row>
-          </Container>
+          <Row>
+            {projects.map(project => (
+                <Project key={project.id} id={project.id} name={project.name}/>
+            ))}
+          </Row>
         </Fragment>
     );
   }
