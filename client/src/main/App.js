@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import { Container, Row } from 'reactstrap';
 import Project from './Project';
 
 export default class App extends Component {
@@ -6,9 +7,13 @@ export default class App extends Component {
     const { projects } = this.props;
     return (
         <Fragment>
-          {projects.map(project => (
-              <Project key={project.id} id={project.id} name={project.name}/>
-          ))}
+          <Container>
+            <Row>
+              {projects.map(project => (
+                  <Project key={project.id} id={project.id} name={project.name}/>
+              ))}
+            </Row>
+          </Container>
         </Fragment>
     );
   }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Jumbotron } from 'reactstrap';
+import { Jumbotron, Col } from 'reactstrap';
 import fetch from 'node-fetch';
 import './Project.css';
 import Pipelines from './Pipelines';
@@ -31,13 +31,13 @@ class Project extends Component {
   render() {
     const { name } = this.props;
     return (
-        <div className="Project">
+        <Col className="Project" xs="auto">
           <Jumbotron><h1>{name}</h1></Jumbotron>
           <p className="Project-intro">
             {this.state.response}
             <Pipelines pipelines={this.state.gitlab}/>
           </p>
-        </div>
+        </Col>
     );
   }
 }

@@ -5,7 +5,6 @@ export default class Pipelines extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // eslint-disable-next-line react/prop-types
       pipelines: props.pipelines
     };
     this.componentWillReceiveProps = this.componentWillReceiveProps.bind(this);
