@@ -1,37 +1,40 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import { Jumbotron } from 'reactstrap';
+import fetch from 'node-fetch';
 import './App.css';
+import Pipelines from './Pipelines';
+
 
 class App extends Component {
-  static async callApi() {
-    const response = await fetch('/api/hello');
-    const body = await response.json();
-    if (response.status !== 200) throw Error(body.message);
-    return body;
+  static fetchPipelinesForProject(projectId) {
+    return fetch(`/projects/${projectId}/pipelines`)
+      .then(res => res.json());
   }
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       response: ''
     };
   }
 
   componentDidMount() {
-    App.callApi()
-      .then(res => this.setState({ response: res.express }))
+    // eslint-disable-next-line react/prop-types
+    const { projectId } = this.props;
+    App.fetchPipelinesForProject(projectId)
+      .then(res => this.setState({ gitlab: res.pipelines }))
       .catch(console.error);
   }
 
   render() {
+    const { projectName } = this.props;
+    console.log(projectName);
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
+        <Jumbotron><h1>{projectName}</h1></Jumbotron>
         <p className="App-intro">
           {this.state.response}
+          <Pipelines pipelines={this.state.gitlab || []}/>
         </p>
       </div>
     );

@@ -13,7 +13,8 @@ function fetchProject(projectId) {
 
 function fetchPipelinesForProject(projectId) {
   return fetch(`${url}/projects/${projectId}/pipelines`, headers)
-    .then(res => res.json());
+    .then(res => res.json())
+    .catch(console.error);
 }
 
 export { fetchProject, fetchPipelinesForProject };

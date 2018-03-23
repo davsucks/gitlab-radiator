@@ -1,4 +1,6 @@
 import App from './App';
+import config from './config';
+import Pipelines from './Pipelines';
+import Pipeline from './Pipeline';
 
-// eslint-disable-next-line import/prefer-default-export
-export { App };
+export { App, config, Pipeline, Pipelines };

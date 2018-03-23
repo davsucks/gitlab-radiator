@@ -4,21 +4,22 @@
 
 import React from 'react';
 import { shallow } from 'enzyme';
+import { expect } from 'chai';
 import { App } from '../main/';
 
 fetch.mockResponse(JSON.stringify({ express: 'Hello World' }));
 
-describe('HelloWorld Component', () => {
+describe('<App />', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow(<App />);
+    wrapper = shallow(<App projectName={'Test Application'}/>, { disableLifecycleMethods: true });
   });
 
-  it('renders h1', () => {
-    expect(wrapper.find('h1').text()).toEqual('Welcome to React');
+  it('renders the project name', () => {
+    expect(wrapper.find('h1').text()).to.equal('Test Application');
   });
-  it('renders p', () => {
-    expect(wrapper.update().find('p').text()).toEqual('Hello World');
+  it('renders a pipeline', () => {
+    expect(wrapper.update().find('Pipelines').length).to.equal(1);
   });
 });
