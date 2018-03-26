@@ -26,7 +26,8 @@ It's exactly what it sounds like
 * Use `createProject` in `secrets.js` to build up a list of projects to display until the tests are green and your radiator is radiant
 
 ## TODO:
-* Allow multiple project ids and display accordingly
+* If any single pipeline is red, make the background bright red
+* Dynamically allocate real estate based on if the project is red or green (bigger if red)
 * Mention how to get a gitlab access token
 * Refresh projects every 10 seconds (todo: rate limits?)
 * Remove superfluous backend. Make api calls in react

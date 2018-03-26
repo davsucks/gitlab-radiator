@@ -22,4 +22,5 @@ describe('<Project />', () => {
   it('renders a pipeline', () => {
     expect(wrapper.update().find('Pipelines').length).to.equal(1);
   });
+  // TODO: use nock to stub out projects response
 });

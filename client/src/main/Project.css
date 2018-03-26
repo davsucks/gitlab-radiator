@@ -5,3 +5,11 @@
 .Project-intro {
   font-size: large;
 }
+
+.success {
+  background-color: green;
+}
+
+.failure {
+  background-color: red;
+}
