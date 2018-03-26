@@ -7,8 +7,6 @@ import { shallow } from 'enzyme';
 import { expect } from 'chai';
 import { Project } from '../main/';
 
-fetch.mockResponse(JSON.stringify({ express: 'Hello World' }));
-
 describe('<Project />', () => {
   let wrapper;
 
