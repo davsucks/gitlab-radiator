@@ -10,6 +10,22 @@
   background-color: green;
 }
 
-.failure {
+.failed {
   background-color: red;
+}
+
+.running {
+  background-color: blue;
+}
+
+.pending {
+  background-color: yellow;
+}
+
+.canceled {
+  background-color: gray;
+}
+
+.skipped {
+  background-color: black;
 }

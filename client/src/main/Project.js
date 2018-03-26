@@ -24,26 +24,24 @@ class Project extends Component {
   fetchPipelines() {
     fetch(`/projects/${this.props.id}/pipelines`)
       .then(res => res.json())
-      .then(res => {
+      .then((res) => {
         const truncatedPipelines = res.pipelines.slice(0, 4);
         this.setState(() => ({ gitlab: truncatedPipelines }));
         return truncatedPipelines;
       })
       .then((pipelines) => {
-        const projectIsGreen = pipelines[0].status === 'success';
-        console.log(pipelines);
-        console.log('project is green? ', projectIsGreen);
-        this.setState(() => ({ projectIsGreen }));
+        const currentStatus = pipelines[0].status;
+        this.setState(() => ({ currentStatus }));
       })
       .catch(console.error);
   }
 
   render() {
     const { name } = this.props;
-    const { projectIsGreen } = this.state;
+    const { currentStatus } = this.state;
     return (
       <Col className="Project" xs="auto">
-        <Badge className={projectIsGreen ? 'success' : 'failure'}><h1>{name}</h1></Badge>
+        <Badge className={currentStatus}><h1>{name}</h1></Badge>
         <p className="Project-intro">
           {this.state.response}
           <Pipelines pipelines={this.state.gitlab} />
