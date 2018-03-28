@@ -11,7 +11,7 @@ describe('config', () => {
   });
 
   it('has a gitlab key', () => {
-    expect(config).to.have.key('gitlab');
+    expect(config).to.have.property('gitlab');
   });
 
   describe('gitlab', () => {
