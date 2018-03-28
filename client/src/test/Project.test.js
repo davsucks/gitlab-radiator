@@ -11,7 +11,7 @@ describe('<Project />', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow(<Project name={'Test Application'}/>, { disableLifecycleMethods: true });
+    wrapper = shallow(<Project name="Test Application" id="test" />, { disableLifecycleMethods: true });
   });
 
   it('renders the project name', () => {

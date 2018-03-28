@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Badge, Col } from 'reactstrap';
 import fetch from 'node-fetch';
+import PropTypes from 'prop-types';
 import './Project.css';
 import './GitLab.css';
 import Pipelines from './Pipelines';
@@ -51,5 +52,10 @@ class Project extends Component {
     );
   }
 }
+
+Project.propTypes = {
+  name: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired
+};
 
 export default Project;

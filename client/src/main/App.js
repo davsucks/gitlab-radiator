@@ -1,18 +1,26 @@
-import React, { Component, Fragment } from 'react';
-import { Container, Row } from 'reactstrap';
+import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
+import { Row } from 'reactstrap';
 import Project from './Project';
 
-export default class App extends Component {
-  render() {
-    const { projects } = this.props;
-    return (
-        <Fragment>
-          <Row>
-            {projects.map(project => (
-                <Project key={project.id} id={project.id} name={project.name}/>
-            ))}
-          </Row>
-        </Fragment>
-    );
-  }
-}
+const App = (props) => {
+  const { projects } = props;
+  return (
+    <Fragment>
+      <Row>
+        {projects.map(project => (
+          <Project key={project.id} id={project.id} name={project.name}/>
+        ))}
+      </Row>
+    </Fragment>
+  );
+};
+
+App.propTypes = {
+  projects: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired
+  })).isRequired
+};
+
+export default App;

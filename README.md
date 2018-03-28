@@ -30,5 +30,3 @@ It's exactly what it sounds like
 * If any single pipeline is red, make the background bright red
 * Dynamically allocate real estate based on if the project is red or green (bigger if red)
 * Remove superfluous backend. Make api calls in react
-* Figure out react/prop-types eslint validation
-
