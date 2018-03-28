@@ -16,7 +16,7 @@ describe('<Pipeline />', () => {
   });
 
   describe('when the pipelines fails', () => {
-    it('renders the pipeline in a green box', () => {
+    it('renders the pipeline in a red box', () => {
       const wrapper = shallow(<Pipeline pipeline={{ status: 'failure' }} />);
       expect(wrapper.prop('color')).to.equal('danger');
     });

@@ -8,9 +8,7 @@ export default {
   secretKey: process.env.SECRET_KEY,
   publicKey: process.env.PUBLIC_KEY,
   gitlab: {
-    projectId: process.env.PROJECT_ID,
     accessToken: process.env.GITLAB_ACCESS_TOKEN,
     parentDomain: process.env.GITLAB_PARENT_DOMAIN,
-    projectName: process.env.GITLAB_PROJECT_NAME
   }
 };
