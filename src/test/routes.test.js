@@ -1,25 +1,17 @@
 import chai, { expect } from 'chai';
+import proxyquire from 'proxyquire';
+import sinon from 'sinon';
 import chaiAsPromised from 'chai-as-promised';
-import fetchMock from 'fetch-mock';
-import { config, routes } from '../main';
 import examplePipelineResponse from './examplePipelineResponse';
+
+// TODO: clean this up
+const fetchMock = sinon.stub().resolves({ json: () => Promise.resolve(examplePipelineResponse) });
+const routes = proxyquire('../main/routes', { 'node-fetch': fetchMock });
 
 chai.use(chaiAsPromised);
 
 describe('routes', () => {
-  const { projectId } = config.gitlab;
-
-  before(() => {
-    fetchMock.get('*', examplePipelineResponse);
-  });
-
-  afterEach(() => {
-    fetchMock.reset();
-  });
-
-  after(() => {
-    fetchMock.restore();
-  });
+  const projectId = '1234';
 
   describe('fetchPipelinesForProject', () => {
     it('should have a green master be green', (done) => {
