@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Badge, Col } from 'reactstrap';
 import fetch from 'node-fetch';
 import './Project.css';
+import './GitLab.css';
 import Pipelines from './Pipelines';
 
 class Project extends Component {
