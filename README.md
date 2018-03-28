@@ -19,6 +19,7 @@ It's exactly what it sounds like
 
 ### Populating `secrets.properties`
 * Refer to the broken tests from the previous run and fix them one by one
+* For the `accessToken` this will be an access token supplied by GitLab. You can snag one from your profile settings
 
 ### Populating `secrets.js`
 * Again, refer to the broken tests in the client directory and fix them one by one
@@ -28,8 +29,6 @@ It's exactly what it sounds like
 ## TODO:
 * If any single pipeline is red, make the background bright red
 * Dynamically allocate real estate based on if the project is red or green (bigger if red)
-* Mention how to get a gitlab access token
-* Refresh projects every 10 seconds (todo: rate limits?)
 * Remove superfluous backend. Make api calls in react
 * Figure out react/prop-types eslint validation
-* Automate first-time setup?
+
