@@ -67,4 +67,26 @@ describe('routes', () => {
       }).catch(done);
     });
   });
+
+  describe('getMasterPipelineStatusWithCommit', () => {
+    const fetchMock = sinon.stub()
+      .onFirstCall()
+      .resolves({ json: () => Promise.resolve(examplePipelineResponse) })
+      .onSecondCall()
+      .resolves({ json: () => Promise.resolve(exampleJobsResponse) });
+    const routes = proxyquire('../main/routes', { 'node-fetch': fetchMock });
+
+    it('returns a commit with the expected schema', (done) => {
+      routes.getMasterPipelineStatusWithCommit(projectId).then((commit) => {
+        expect(commit).to.have.keys(
+          'id',
+          'status',
+          'ref',
+          'sha',
+          'commit'
+        );
+        done();
+      }).catch(done);
+    });
+  });
 });

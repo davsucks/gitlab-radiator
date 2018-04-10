@@ -9,6 +9,7 @@
     "test": "mocha src/test/** --require babel-register && cd client && yarn test"
   },
   "dependencies": {
+    "babel-polyfill": "^6.26.0",
     "client": "file:client",
     "dotenv": "^5.0.1",
     "express": "^4.16.3",

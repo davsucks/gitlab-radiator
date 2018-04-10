@@ -20,14 +20,19 @@ function fetchJobsForProject(projectId) {
     .catch(console.error);
 }
 
-// async function getMasterPipelineStatusWithCommit(projectId) {
-//   const mostRecentPipeline = await fetchPipelinesForProject(projectId);
-//   const commit = await fetch('')
-//   return k
-// }
-
 function fetchMostRecentCommitForProject(projectId) {
   return fetchJobsForProject(projectId).then(jobs => jobs[0].commit);
 }
 
-export { fetchPipelinesForProject, fetchJobsForProject, fetchMostRecentCommitForProject };
+async function getMasterPipelineStatusWithCommit(projectId) {
+  const pipelines = await fetchPipelinesForProject(projectId);
+  const commit = await fetchMostRecentCommitForProject(projectId);
+  return Object.assign({}, pipelines[0], { commit });
+}
+
+export {
+  fetchPipelinesForProject,
+  fetchJobsForProject,
+  fetchMostRecentCommitForProject,
+  getMasterPipelineStatusWithCommit
+};
