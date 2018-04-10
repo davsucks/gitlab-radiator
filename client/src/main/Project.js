@@ -46,7 +46,6 @@ class Project extends Component {
         <Badge className={currentStatus}><h1>{name}</h1></Badge>
         <p className="Project-intro">
           {this.state.response}
-          <Pipelines pipelines={this.state.gitlab} />
         </p>
       </Col>
     );

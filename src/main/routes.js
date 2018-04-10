@@ -8,9 +8,16 @@ const headers = { headers: { 'Private-Token': accessToken } };
 
 function fetchPipelinesForProject(projectId) {
   return fetch(`${url}/projects/${projectId}/pipelines`, headers)
-      .then(res => res.json())
-      .then(pipelines => pipelines.filter(pipeline => pipeline.ref === 'master'))
-      .catch(console.error);
+    .then(res => res.json())
+    .then(pipelines => pipelines.filter(pipeline => pipeline.ref === 'master'))
+    .catch(console.error);
 }
 
-export { fetchPipelinesForProject };
+function fetchJobsForProject(projectId) {
+  return fetch(`${url}/projects/${projectId}/jobs`, headers)
+    .then(res => res.json())
+    .then(jobs => jobs.filter(job => job.pipeline.ref === 'master'))
+    .catch(console.error);
+}
+
+export { fetchPipelinesForProject, fetchJobsForProject };
