@@ -46,4 +46,25 @@ describe('routes', () => {
       }).catch(done);
     });
   });
+
+  describe('fetchMostRecentCommitForProject', () => {
+    const fetchMock = sinon.stub()
+      .resolves({ json: () => Promise.resolve(exampleJobsResponse) });
+    const routes = proxyquire('../main/routes', { 'node-fetch': fetchMock });
+
+    it('returns a commit with the expected schema', (done) => {
+      routes.fetchMostRecentCommitForProject(projectId).then((commit) => {
+        expect(commit).to.have.keys(
+          'author_email',
+          'author_name',
+          'created_at',
+          'id',
+          'message',
+          'short_id',
+          'title'
+        );
+        done();
+      }).catch(done);
+    });
+  });
 });
