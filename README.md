@@ -8,7 +8,7 @@ It's exactly what it sounds like 🤷
 * `yarn`
 * `yarn test`
 * Don't panic! You're missing configuration, so the tests should fail
-  * Create a `config.json` file at the root of your repository
+  * Create a `config.json` file in `<repo root>/main`
   * The failing tests should guide you in generating the correct config
   ```JSON
     {
