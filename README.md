@@ -29,4 +29,12 @@ It's exactly what it sounds like
 ## TODO:
 * If any single pipeline is red, make the background bright red
 * Dynamically allocate real estate based on if the project is red or green (bigger if red)
-* Remove superfluous backend. Make api calls in react
+* Remove superfluous backend. Make api calls in React.
+* Make branches shown configurable (i.e. not just master)
+* Fetch lates pipeline for a specific branch (in case a desired branch hasn't had a pipeline run in a while and doesn't come page in the paginated generic GET for all pipelines)
+* Remove `secrets.js` and add some sort of project config for everthing except actually secret stuff (API tokens etc)
+* Display commit message, committer's name (may require fetching more info for given pipeline/job)
+* Add option to highlight cross-project related commits based on commit message\
+* Improve README
+* Replace `yarn dev` with `yarn start`?
+* Clean up unused stuff from `create-react-app`

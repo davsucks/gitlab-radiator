@@ -4,7 +4,6 @@ import fetch from 'node-fetch';
 import PropTypes from 'prop-types';
 import './Project.css';
 import './GitLab.css';
-import Pipelines from './Pipelines';
 
 class Project extends Component {
   constructor(props) {

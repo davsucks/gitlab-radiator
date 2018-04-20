@@ -1,7 +1,6 @@
 import fetch from 'node-fetch';
-import config from './config';
+import { accessToken, parentDomain } from './config';
 
-const { accessToken, parentDomain } = config.gitlab;
 export const url = `https://gitlab.${parentDomain}.com/api/v4`;
 
 const headers = { headers: { 'Private-Token': accessToken } };
