@@ -31,7 +31,11 @@ It's exactly what it sounds like 🤷
 * If any single pipeline is red, make the background bright red
 * Dynamically allocate real estate based on if the project is red or green (bigger if red)
 * Make branches shown configurable (i.e. not just master)
-* Fetch lates pipeline for a specific branch (in case a desired branch hasn't had a pipeline run in a while and doesn't come page in the paginated generic GET for all pipelines)
+* Fetch latest pipeline for a specific branch (in case a desired branch hasn't had a pipeline run in a while and doesn't come page in the paginated generic GET for all pipelines)
 * Display commit message, committer's name (may require fetching more info for given pipeline/job)
 * Add option to highlight cross-project related commits based on commit message
 * Clean up unused stuff from `create-react-app`
+* Remove `node-fetch`, since this is now running in the client
+* Clear fetch interval in `<Project />` to prevent memory leaks
+* Can remove `<Pipelines />` and `<Pipeline />`?
+* Integrate David's WIP

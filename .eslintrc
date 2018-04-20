@@ -16,5 +16,6 @@
   },
   "globals": {
     "expect": true,
+    "jest": true
   }
 }

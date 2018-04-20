@@ -18,5 +18,12 @@ describe('<Project />', () => {
   test('renders the project name', () => {
     expect(wrapper.find('h1').text()).toBe('Test Application');
   });
-  // TODO: use nock to stub out projects response
+
+  xit('handles multiple branches if configured', () => {
+    // TODO
+  });
+
+  xit('setInterval called and paired with clearInterval to prevent memory leak', () => {
+    // TODO
+  });
 });

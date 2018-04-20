@@ -1,14 +1,9 @@
 import React, { Component } from 'react';
 import { Badge, Col } from 'reactstrap';
-import fetch from 'node-fetch';
 import PropTypes from 'prop-types';
-import config from '../config.json';
+import { fetchLatestPipeline } from './services';
 import './Project.css';
 import './GitLab.css';
-
-const { accessToken, parentDomain } = config;
-const url = `https://gitlab.${parentDomain}.com/api/v4`;
-const headers = { headers: { 'Private-Token': accessToken } };
 
 class Project extends Component {
   constructor(props) {
@@ -17,24 +12,21 @@ class Project extends Component {
       response: ''
     };
     this.componentDidMount = this.componentDidMount.bind(this);
-    this.fetchPipelines = this.fetchPipelines.bind(this);
+    this.fetch = this.fetch.bind(this);
   }
 
   componentDidMount() {
     const tenSecondsInMillis = 10 * 1000;
-    setInterval(this.fetchPipelines, tenSecondsInMillis);
-    this.fetchPipelines();
+    setInterval(this.fetch, tenSecondsInMillis);
+    this.fetch();
   }
 
-  fetchPipelines() {
-    fetch(`${url}/projects/${this.props.id}/pipelines`, headers)
-      .then(res => res.json())
-      .then(pipelines => pipelines.filter(pipeline => pipeline.ref === 'master'))
-      .then(pipelines => pipelines[0])
-      .then((pipeline) => {
-        this.setState(() => ({ currentStatus: pipeline.status }));
-      })
-      .catch(console.error);
+  fetch() {
+    fetchLatestPipeline(this.props.id).then((pipeline) => {
+      this.setState(() => ({
+        currentStatus: pipeline ? pipeline.status : null
+      }));
+    });
   }
 
   render() {
