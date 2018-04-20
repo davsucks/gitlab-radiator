@@ -8,32 +8,29 @@ import config from '../config.json';
 const { projects, accessToken, parentDomain } = config;
 
 describe('config', () => {
-  it('has at least one project in it', () => {
-    expect(projects.length).to.be.at.least(1);
+  test('has at least one project in it', () => {
+    expect(projects.length).toBeGreaterThanOrEqual(1);
   });
 
-  it('accessToken is present', () => {
-    expect(accessToken).to.not.be.undefined;
+  test('accessToken is present', () => {
+    expect(accessToken).not.toBeUndefined();
   });
 
-  it('parentDomain is present', () => {
-    expect(parentDomain).to.not.be.undefined;
+  test('parentDomain is present', () => {
+    expect(parentDomain).not.toBeUndefined();
   });
 
   describe('the shape and content of a project', () => {
-    let project;
+    const [project] = projects;
 
-    beforeEach(() => {
-      [project] = projects;
+    test('has the right shape (name and id)', () => {
+      expect(project).toHaveProperty('name');
+      expect(project).toHaveProperty('id');
     });
 
-    it('has the right shape (name and id)', () => {
-      expect(project).to.have.keys(['name', 'id']);
-    });
-
-    it('actually contains information', () => {
-      expect(project.name).to.not.be.undefined;
-      expect(project.id).to.not.be.undefined;
+    test('actually contains information', () => {
+      expect(project.name).not.toBeUndefined();
+      expect(project.id).not.toBeUndefined();
     });
   });
 });

@@ -15,8 +15,8 @@ describe('<Project />', () => {
     });
   });
 
-  it('renders the project name', () => {
-    expect(wrapper.find('h1').text()).to.equal('Test Application');
+  test('renders the project name', () => {
+    expect(wrapper.find('h1').text()).toBe('Test Application');
   });
   // TODO: use nock to stub out projects response
 });

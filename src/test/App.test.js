@@ -15,19 +15,19 @@ describe('<App />', () => {
     wrapper = shallow(<App projects={projects} />);
   });
 
-  it('renders the first <Project/> with the name and id', () => {
-    expect(wrapper.contains(<Project name="Test Project" id="1234" />)).to.equal(true);
+  test('renders the first <Project/> with the name and id', () => {
+    expect(wrapper.contains(<Project name="Test Project" id="1234" />)).toBeTruthy();
   });
 
-  it('renders one <Project/> for each project', () => {
-    expect(wrapper.find(Project).length).to.equal(2);
+  test('renders one <Project/> for each project', () => {
+    expect(wrapper.find(Project).length).toBe(2);
   });
 
-  it('renders the second <Project/> with attributes', () => {
-    expect(wrapper.contains(<Project name="Second project" id="3456" />)).to.equal(true);
+  test('renders the second <Project/> with attributes', () => {
+    expect(wrapper.contains(<Project name="Second project" id="3456" />)).toBeTruthy();
   });
 
-  it('renders the projects in a row', () => {
-    expect(wrapper.find(Row).length).to.equal(1);
+  test('renders the projects in a row', () => {
+    expect(wrapper.find(Row).length).toBe(1);
   });
 });
