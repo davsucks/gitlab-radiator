@@ -2,15 +2,19 @@ import React, { Component } from 'react';
 import { Badge, Col } from 'reactstrap';
 import fetch from 'node-fetch';
 import PropTypes from 'prop-types';
+import config from '../config.json';
 import './Project.css';
 import './GitLab.css';
+
+const { accessToken, parentDomain } = config;
+const url = `https://gitlab.${parentDomain}.com/api/v4`;
+const headers = { headers: { 'Private-Token': accessToken } };
 
 class Project extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      response: '',
-      gitlab: []
+      response: ''
     };
     this.componentDidMount = this.componentDidMount.bind(this);
     this.fetchPipelines = this.fetchPipelines.bind(this);
@@ -23,16 +27,12 @@ class Project extends Component {
   }
 
   fetchPipelines() {
-    fetch(`/projects/${this.props.id}/pipelines`)
+    fetch(`${url}/projects/${this.props.id}/pipelines`, headers)
       .then(res => res.json())
-      .then((res) => {
-        const truncatedPipelines = res.pipelines.slice(0, 4);
-        this.setState(() => ({ gitlab: truncatedPipelines }));
-        return truncatedPipelines;
-      })
-      .then((pipelines) => {
-        const currentStatus = pipelines[0].status;
-        this.setState(() => ({ currentStatus }));
+      .then(pipelines => pipelines.filter(pipeline => pipeline.ref === 'master'))
+      .then(pipelines => pipelines[0])
+      .then((pipeline) => {
+        this.setState(() => ({ currentStatus: pipeline.status }));
       })
       .catch(console.error);
   }
@@ -42,10 +42,10 @@ class Project extends Component {
     const { currentStatus } = this.state;
     return (
       <Col className="Project" xs="auto">
-        <Badge className={currentStatus}><h1>{name}</h1></Badge>
-        <p className="Project-intro">
-          {this.state.response}
-        </p>
+        <Badge className={currentStatus}>
+          <h1>{name}</h1>
+        </Badge>
+        <p className="Project-intro">{this.state.response}</p>
       </Col>
     );
   }

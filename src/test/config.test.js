@@ -1,21 +1,40 @@
-import 'babel-polyfill';
-import { expect } from 'chai';
-import { config } from '../main';
+/*
+ * @jest-environment node
+*/
+/* eslint-disable no-unused-expressions */
 
-const expectedKeys = ['accessToken', 'parentDomain'];
+import { expect } from 'chai';
+import config from '../config.json';
+
+const { projects, accessToken, parentDomain } = config;
 
 describe('config', () => {
-  it('is an object', () => {
-    expect(config).to.be.an('object');
+  it('has at least one project in it', () => {
+    expect(projects.length).to.be.at.least(1);
   });
 
-  it('has the necessary keys for the application to work', () => {
-    expect(config).to.have.keys(expectedKeys);
+  it('accessToken is present', () => {
+    expect(accessToken).to.not.be.undefined;
   });
 
-  it('has actual values for each configuration key', () => {
-    expectedKeys.forEach((key) => {
-      expect(config[key]).to.not.be.undefined;
+  it('parentDomain is present', () => {
+    expect(parentDomain).to.not.be.undefined;
+  });
+
+  describe('the shape and content of a project', () => {
+    let project;
+
+    beforeEach(() => {
+      [project] = projects;
+    });
+
+    it('has the right shape (name and id)', () => {
+      expect(project).to.have.keys(['name', 'id']);
+    });
+
+    it('actually contains information', () => {
+      expect(project.name).to.not.be.undefined;
+      expect(project.id).to.not.be.undefined;
     });
   });
 });

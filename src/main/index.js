@@ -1,4 +1,8 @@
-import * as routes from './routes';
-import config from './config';
+import App from './App';
+import Pipelines from './Pipelines';
+import Pipeline from './Pipeline';
+import Project from './Project';
+import config from '../config.json';
 
-export { routes, config };
+const { projects } = config;
+export { App, Pipeline, Pipelines, Project, projects };
