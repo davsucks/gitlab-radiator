@@ -4,7 +4,6 @@
 
 import React from 'react';
 import { shallow } from 'enzyme';
-import { expect } from 'chai';
 import { Row } from 'reactstrap';
 import { App, Project } from '../main';
 

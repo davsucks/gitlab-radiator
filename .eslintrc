@@ -9,11 +9,12 @@
   "ecmaFeatures": {
     "modules": true
   },
-  "extends": [
-    "airbnb"
-  ],
+  "extends": ["airbnb"],
   "rules": {
     "comma-dangle": "off",
     "react/jsx-filename-extension": "off"
+  },
+  "globals": {
+    "expect": true,
   }
 }

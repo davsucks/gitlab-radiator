@@ -3,7 +3,6 @@
 */
 /* eslint-disable no-unused-expressions */
 
-import { expect } from 'chai';
 import config from '../config.json';
 
 const { projects, accessToken, parentDomain } = config;
