@@ -8,11 +8,10 @@ import './GitLab.css';
 class Project extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      response: ''
-    };
-    this.componentDidMount = this.componentDidMount.bind(this);
     this.fetch = this.fetch.bind(this);
+    this.state = {
+      currentStatus: null
+    };
   }
 
   componentDidMount() {
@@ -30,14 +29,11 @@ class Project extends Component {
   }
 
   render() {
-    const { name } = this.props;
-    const { currentStatus } = this.state;
     return (
       <Col className="Project" xs="auto">
-        <Badge className={currentStatus}>
-          <h1>{name}</h1>
+        <Badge className={this.state.currentStatus}>
+          <h1>{this.props.name}</h1>
         </Badge>
-        <p className="Project-intro">{this.state.response}</p>
       </Col>
     );
   }
