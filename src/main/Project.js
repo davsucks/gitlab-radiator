@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 import { Badge, Col } from 'reactstrap';
 import PropTypes from 'prop-types';
-import { fetchLatestPipeline } from './services';
+import { fetchLatestPipelines } from './services';
 import './Project.css';
 import './GitLab.css';
 
@@ -12,7 +12,7 @@ class Project extends Component {
     super(props);
     this.fetch = this.fetch.bind(this);
     this.state = {
-      currentStatus: null,
+      pipelines: [],
       interval: null
     };
   }
@@ -29,27 +29,40 @@ class Project extends Component {
   }
 
   fetch() {
-    fetchLatestPipeline(this.props.id).then((pipeline) => {
-      this.setState(() => ({
-        currentStatus: pipeline ? pipeline.status : null
-      }));
+    fetchLatestPipelines(this.props.project).then((pipelines) => {
+      this.setState(() => ({ pipelines }));
     });
   }
 
   render() {
     return (
       <Col className="Project" xs="auto">
-        <Badge className={this.state.currentStatus}>
-          <h1>{this.props.name}</h1>
-        </Badge>
+        <h1>{this.props.project.name}</h1>
+        {this.state.pipelines.map(pipeline => (
+          <Badge key={pipeline.id} className={pipeline.status}>
+            <h2>{pipeline.ref}</h2>
+          </Badge>
+        ))}
       </Col>
     );
   }
 }
 
 Project.propTypes = {
-  name: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired
+  project: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
+    refs: PropTypes.arrayOf(PropTypes.string),
+    sha: PropTypes.string
+  })
+};
+
+Project.defaultProps = {
+  project: {
+    name: 'No project name defined',
+    id: 'No project id defined',
+    refs: []
+  }
 };
 
 export default Project;

@@ -10,6 +10,7 @@ It's exactly what it sounds like 🤷
 * Don't panic! You're missing configuration, so the tests should fail
   * Create a `config.json` file in `<repo root>/main`
   * The failing tests should guide you in generating the correct config
+  * The `refs` field is optional. If you set it, the latest pipeline for every git branch in your repo will be shown. If you don't, we'll just show the lastest pipeline that ran, regardless of branch.
   ```JSON
     {
       "accessToken": "string",
@@ -17,7 +18,11 @@ It's exactly what it sounds like 🤷
       "projects": [
         {
           "id": "string",
-          "name": "string"
+          "name": "string",
+          "refs": [
+            "master",
+            "develop"
+          ]
         }
       ]
     }
@@ -30,10 +35,8 @@ It's exactly what it sounds like 🤷
 ## TODO:
 * If any single pipeline is red, make the background bright red
 * Dynamically allocate real estate based on if the project is red or green (bigger if red)
-* Make branches shown configurable (i.e. not just master)
 * Fetch latest pipeline for a specific branch (in case a desired branch hasn't had a pipeline run in a while and doesn't come page in the paginated generic GET for all pipelines)
 * Display commit message, committer's name (may require fetching more info for given pipeline/job)
 * Add option to highlight cross-project related commits based on commit message
 * Clean up unused stuff from `create-react-app`
-* Clear fetch interval in `<Project />` to prevent memory leaks
 * Integrate David's WIP

@@ -8,15 +8,15 @@ import { Row } from 'reactstrap';
 import { App, Project } from '../main';
 
 describe('<App />', () => {
+  const projects = [{ name: 'Test Project', id: '1234' }, { name: 'Second project', id: '3456' }];
   let wrapper;
 
   beforeEach(() => {
-    const projects = [{ name: 'Test Project', id: '1234' }, { name: 'Second project', id: '3456' }];
     wrapper = shallow(<App projects={projects} />);
   });
 
   test('renders the first <Project/> with the name and id', () => {
-    expect(wrapper.contains(<Project name="Test Project" id="1234" />)).toBeTruthy();
+    expect(wrapper.contains(<Project project={projects[0]} />)).toBeTruthy();
   });
 
   test('renders one <Project/> for each project', () => {
@@ -24,7 +24,7 @@ describe('<App />', () => {
   });
 
   test('renders the second <Project/> with attributes', () => {
-    expect(wrapper.contains(<Project name="Second project" id="3456" />)).toBeTruthy();
+    expect(wrapper.contains(<Project project={projects[0]} />)).toBeTruthy();
   });
 
   test('renders the projects in a row', () => {

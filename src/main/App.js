@@ -5,9 +5,7 @@ import Project from './Project';
 
 const App = ({ projects }) => (
   <Fragment>
-    <Row>
-      {projects.map(project => <Project key={project.id} id={project.id} name={project.name} />)}
-    </Row>
+    <Row>{projects.map(project => <Project key={project.id} project={project} />)}</Row>
   </Fragment>
 );
 
