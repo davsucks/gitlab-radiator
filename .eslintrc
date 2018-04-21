@@ -16,6 +16,7 @@
   },
   "globals": {
     "expect": true,
-    "jest": true
+    "jest": true,
+    "afterAll": true
   }
 }

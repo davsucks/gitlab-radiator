@@ -1,3 +1,5 @@
+/* eslint-disable react/no-did-mount-set-state */
+
 import React, { Component } from 'react';
 import { Badge, Col } from 'reactstrap';
 import PropTypes from 'prop-types';
@@ -10,14 +12,20 @@ class Project extends Component {
     super(props);
     this.fetch = this.fetch.bind(this);
     this.state = {
-      currentStatus: null
+      currentStatus: null,
+      interval: null
     };
   }
 
   componentDidMount() {
     const tenSecondsInMillis = 10 * 1000;
-    setInterval(this.fetch, tenSecondsInMillis);
+    const interval = setInterval(this.fetch, tenSecondsInMillis);
+    this.setState(() => ({ interval }));
     this.fetch();
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.state.interval);
   }
 
   fetch() {
