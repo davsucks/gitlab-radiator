@@ -15,15 +15,33 @@ const { fetchLatestPipelinesWithCommits } = services;
 
 describe('<Project />', () => {
   const pipelines = [
-    { id: 1, status: 'succeeded', ref: 'master' },
-    { id: 2, status: 'failed', ref: 'develop' }
+    {
+      id: 1,
+      status: 'succeeded',
+      ref: 'master',
+      commit: {
+        author_name: 'Jane Doe',
+        message: 'Foo'
+      }
+    },
+    {
+      id: 2,
+      status: 'failed',
+      ref: 'develop',
+      commit: {
+        author_name: 'John Doe',
+        message: 'Bar'
+      }
+    },
   ];
+
   const props = {
     project: {
       name: 'Test Application',
       id: 'test'
     }
   };
+
   const ProjectJsx = <Project {...props} />;
 
   beforeEach(() => {
@@ -44,11 +62,15 @@ describe('<Project />', () => {
     const badgeForMaster = (
       <Badge key={1} className="succeeded">
         <h2>master</h2>
+        <h4>Jane Doe</h4>
+        <p>Foo</p>
       </Badge>
     );
     const badgeForDevelop = (
       <Badge key={2} className="failed">
         <h2>develop</h2>
+        <h4>John Doe</h4>
+        <p>Bar</p>
       </Badge>
     );
     const wrapper = mount(ProjectJsx);

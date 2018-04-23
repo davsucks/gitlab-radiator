@@ -39,7 +39,7 @@ class Project extends Component {
       <Col className="Project" xs="auto">
         <h1>{this.props.project.name}</h1>
         {this.state.pipelines.map(pipeline => (
-          <Badge key={pipeline.id} className={`Badge ${pipeline.status}`}>
+          <Badge key={pipeline.id} className={pipeline.status}>
             <h2>{pipeline.ref}</h2>
             <h4>{pipeline.commit.author_name}</h4>
             <p>{pipeline.commit.message}</p>
