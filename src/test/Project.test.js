@@ -10,8 +10,8 @@ import * as services from '../main/services';
 import { syncPromiseOf } from './testHelpers';
 
 jest.mock('node-fetch', () => jest.fn());
-jest.spyOn(services, 'fetchLatestPipelines');
-const { fetchLatestPipelines } = services;
+jest.spyOn(services, 'fetchLatestPipelinesWithCommits');
+const { fetchLatestPipelinesWithCommits } = services;
 
 describe('<Project />', () => {
   const pipelines = [
@@ -27,7 +27,7 @@ describe('<Project />', () => {
   const ProjectJsx = <Project {...props} />;
 
   beforeEach(() => {
-    fetchLatestPipelines.mockImplementation(() => syncPromiseOf(pipelines));
+    fetchLatestPipelinesWithCommits.mockImplementation(() => syncPromiseOf(pipelines));
   });
 
   afterAll(() => jest.resetAllMocks());
@@ -66,7 +66,7 @@ describe('<Project />', () => {
     const wrapper = mount(ProjectJsx);
 
     expect(setInterval).toHaveBeenCalledWith(expect.any(Function), 10000);
-    expect(fetchLatestPipelines).toHaveBeenCalledWith(props.project);
+    expect(fetchLatestPipelinesWithCommits).toHaveBeenCalledWith(props.project);
 
     wrapper.unmount();
 

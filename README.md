@@ -39,4 +39,4 @@ It's exactly what it sounds like 🤷
 * Display commit message, committer's name (may require fetching more info for given pipeline/job)
 * Add option to highlight cross-project related commits based on commit message
 * Clean up unused stuff from `create-react-app`
-* Integrate David's WIP
+* Graceful degradation in case commit info is not available (can still display pipeline)

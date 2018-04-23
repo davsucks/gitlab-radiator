@@ -1,7 +1,9 @@
+/* eslint-disable import/prefer-default-export */
+
 export const syncPromiseOf = v => ({
   then(f) {
     return f(v);
   }
 });
 
-export default syncPromiseOf;
+export const buildMockResponse = jsonBody => ({ json: () => jsonBody });

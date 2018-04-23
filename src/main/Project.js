@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 import { Badge, Col } from 'reactstrap';
 import PropTypes from 'prop-types';
-import { fetchLatestPipelines } from './services';
+import { fetchLatestPipelinesWithCommits } from './services';
 import './Project.css';
 import './GitLab.css';
 
@@ -29,9 +29,8 @@ class Project extends Component {
   }
 
   fetch() {
-    fetchLatestPipelines(this.props.project).then((pipelines) => {
-      this.setState(() => ({ pipelines }));
-    });
+    fetchLatestPipelinesWithCommits(this.props.project)
+      .then(pipelines => this.setState(() => ({ pipelines })));
   }
 
   render() {
