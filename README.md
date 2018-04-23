@@ -36,12 +36,12 @@ It's exactly what it sounds like 🤷
 * The monitor always shows the latest **pipeline** (not job!) for the configured refs (branches).
 * If no refs are configured, it shows the latest pipeline overall
 * A pipeleline can be in the following states:
-  * <span style="color: white; background-color: orange;">Pending</span>
-  * <span style="color: white; background-color: blue;">Running</span>
-  * <span style="color: white; background-color: purple;">Skipped</span>
-  * <span style="color: white; background-color: black;">Canceled</span>
-  * <span style="color: white; background-color: green;">Success</span>
-  * <span style="color: white; background-color: red;">Failed</span>
+  * 🏀 Pending (orange)
+  * 📘 Running (blue)
+  * 🍇 Skipped (purple)
+  * ⚫ Canceled (black)
+  * 💚 Success (green)
+  * 🍎 Failed (red)
 
 ## TODO:
 * Don't force users to save their token to disk. Dynamically grab it from the environment somehow.
