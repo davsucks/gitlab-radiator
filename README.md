@@ -2,6 +2,8 @@
 
 It's exactly what it sounds like 🤷
 
+![screenshot](public/screenshot.png)
+
 ## Setup:
 * Clone the repo
 * Install [yarn](https://yarnpkg.com/en/)
@@ -45,7 +47,10 @@ It's exactly what it sounds like 🤷
 
 ## TODO:
 * Don't force users to save their token to disk. Dynamically grab it from the environment somehow.
-* Dynamically allocate real estate based on if the project is red or green (bigger if red)
+* Responsive styling needs a lot of love
+  * Colors should always stretch to fill project
+  * Project name should have more padding
+  * Wrap text and respond to window size properly
 * Fetch latest pipeline for a specific branch (in case a desired branch hasn't had a pipeline run in a while and doesn't come page in the paginated generic GET for all pipelines)
 * Add option to highlight cross-project related commits based on commit message
 * Clean up unused stuff from `create-react-app`

@@ -28,7 +28,7 @@ const combineWithLatestCommit = (projectId, pipeline) =>
   fetchJobsForPipeline(projectId, pipeline)
     .then(jobs => jobs[0])
     .then(({ commit }) => ({ ...pipeline, commit }));
-    // TODO: catch and return pipeline
+  // TODO: catch and return pipeline
 
 const fetchPipelines = projectId => fetch(
   `${baseUrl}/projects/${projectId}/pipelines`, headers)
