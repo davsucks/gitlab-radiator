@@ -5,6 +5,7 @@ import { Badge, Col } from 'reactstrap';
 import PropTypes from 'prop-types';
 import { fetchLatestPipelinesWithCommits } from './services';
 import './Project.css';
+import './Badge.css';
 import './GitLab.css';
 
 class Project extends Component {

@@ -1,5 +1,9 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
-  padding: 0;
+  padding: 5px 20px;
   font-family: sans-serif;
 }

@@ -1,0 +1,5 @@
+/* overriding styles from reactstrap */
+.badge {
+    border-radius: unset;
+    padding: 20px;
+}

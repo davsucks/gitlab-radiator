@@ -32,11 +32,23 @@ It's exactly what it sounds like 🤷
   * This time they should pass
 * `yarn start`
 
+## Key
+* The monitor always shows the latest **pipeline** (not job!) for the configured refs (branches).
+* If no refs are configured, it shows the latest pipeline overall
+* A pipeleline can be in the following states:
+  * <span style="color: white; background-color: orange;">Pending</span>
+  * <span style="color: white; background-color: blue;">Running</span>
+  * <span style="color: white; background-color: purple;">Skipped</span>
+  * <span style="color: white; background-color: black;">Canceled</span>
+  * <span style="color: white; background-color: green;">Success</span>
+  * <span style="color: white; background-color: red;">Failed</span>
+
 ## TODO:
-* If any single pipeline is red, make the background bright red
+* Don't force users to save their token to disk. Dynamically grab it from the environment somehow.
 * Dynamically allocate real estate based on if the project is red or green (bigger if red)
 * Fetch latest pipeline for a specific branch (in case a desired branch hasn't had a pipeline run in a while and doesn't come page in the paginated generic GET for all pipelines)
-* Display commit message, committer's name (may require fetching more info for given pipeline/job)
 * Add option to highlight cross-project related commits based on commit message
 * Clean up unused stuff from `create-react-app`
 * Graceful degradation in case commit info is not available (can still display pipeline)
+* Make fetch interval configurable
+* Show commiter's avatar?

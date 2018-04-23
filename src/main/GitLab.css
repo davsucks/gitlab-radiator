@@ -11,13 +11,13 @@
 }
 
 .pending {
-    background-color: yellow;
+    background-color: orange;
 }
 
 .canceled {
-    background-color: gray;
+    background-color: black;
 }
 
 .skipped {
-    background-color: black;
+    background-color: purple;
 }
