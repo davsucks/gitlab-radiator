@@ -42,10 +42,13 @@ It's exactly what it sounds like 🤷
   * 📘 Running (blue)
   * 🍇 Skipped (purple)
   * ⚫ Canceled (black)
+  * 🌚 Manual (grey)
   * 💚 Success (green)
   * 🍎 Failed (red)
+* Note that the difference betwen `manual` and `skipped` is currently unclear. On the Gitlab web UI, both statuses are possible for pipelines in which all jobs have succeeded except for those configured as `manual` in the `.gitlab-ci.yml`. However, the Gitlab API (which this radiator uses) seems to return `suceeded` for pipelines that the web UI considers `skipped`, and `manual` for pipelines the web UI considers `manual`.
 
 ## TODO:
+* What is the difference betwen `manual` and `skipped`?!
 * Don't force users to save their token to disk. Dynamically grab it from the environment somehow.
 * Responsive styling needs a lot of love
   * Colors should always stretch to fill project

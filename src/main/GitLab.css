@@ -18,6 +18,10 @@
     background-color: black;
 }
 
+.manual {
+    background-color: grey;
+}
+
 .skipped {
     background-color: purple;
 }
