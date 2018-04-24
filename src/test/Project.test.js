@@ -4,7 +4,6 @@
 
 import React from 'react';
 import { mount, shallow } from 'enzyme';
-import { Badge } from 'reactstrap';
 import { Project } from '../main/';
 import * as services from '../main/services';
 import { syncPromiseOf } from './testHelpers';
@@ -44,9 +43,7 @@ describe('<Project />', () => {
 
   const ProjectJsx = <Project {...props} />;
 
-  beforeEach(() => {
-    fetchLatestPipelinesWithCommits.mockImplementation(() => syncPromiseOf(pipelines));
-  });
+  beforeEach(() => fetchLatestPipelinesWithCommits.mockImplementation(() => syncPromiseOf(pipelines)));
 
   afterAll(() => jest.resetAllMocks());
 
@@ -56,28 +53,28 @@ describe('<Project />', () => {
     expect(wrapper.find('h1').text()).toBe('Test Application');
   });
 
-  test('renders a badge per ref', () => {
+  test('renders a div per ref', () => {
     jest.useFakeTimers();
 
     const badgeForMaster = (
-      <Badge key={1} className="succeeded">
+      <div key={1} className={`pipeline succeeded`}>
         <h2>master</h2>
         <h4>Jane Doe</h4>
         <p>Foo</p>
-      </Badge>
+      </div>
     );
     const badgeForDevelop = (
-      <Badge key={2} className="failed">
+      <div key={2} className={`pipeline failed`}>
         <h2>develop</h2>
         <h4>John Doe</h4>
         <p>Bar</p>
-      </Badge>
+      </div>
     );
     const wrapper = mount(ProjectJsx);
 
     expect(wrapper.contains(badgeForMaster)).toBeTruthy();
     expect(wrapper.contains(badgeForDevelop)).toBeTruthy();
-    expect(wrapper.find(Badge).length).toBe(2);
+    expect(wrapper.find('.pipeline').length).toBe(2);
   });
 
   it('regularly fetches data', () => {
