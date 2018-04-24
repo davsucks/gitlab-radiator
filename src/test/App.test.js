@@ -6,7 +6,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { App, Project } from '../main';
 
-describe('<App />', () => {
+describe.only('<App />', () => {
   const projects = [{ name: 'Test Project', id: '1234' }, { name: 'Second project', id: '3456' }];
   let wrapper;
 
