@@ -1,27 +1,27 @@
 .success {
-    background-color: green;
+    background-color: #57a71c;
 }
 
 .failed {
-    background-color: red;
+    background-color: #9e091e;
 }
 
 .running {
-    background-color: blue;
+    background-color: #10aded;
 }
 
 .pending {
-    background-color: orange;
+    background-color: #d14810;
 }
 
 .canceled {
-    background-color: black;
-}
-
-.manual {
-    background-color: grey;
+    background-color: #111111;
 }
 
 .skipped {
-    background-color: purple;
+    background-color: #594274;
+}
+
+.manual {
+    background-color: #606060;
 }

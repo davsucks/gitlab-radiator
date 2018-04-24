@@ -1,12 +1,11 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { Row } from 'reactstrap';
 import Project from './Project';
 
 const App = ({ projects }) => (
-  <Fragment>
-    <Row>{projects.map(project => <Project key={project.id} project={project} />)}</Row>
-  </Fragment>
+  <div className="wrapper">
+    {projects.map(project => <Project key={project.id} project={project} />)}
+  </div>
 );
 
 App.propTypes = {

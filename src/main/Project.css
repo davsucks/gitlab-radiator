@@ -1,17 +1,41 @@
-.Project {
-  text-align: center;
-  border: 5px solid black;
-  border-radius: 10px;
+.project {
   overflow: hidden;
-  margin: 5px;
-  padding: 0;
-  padding-top: 5px;
+  text-align: center;
+  border: 1px solid rgb(55, 55, 45);
+  border-radius: .5rem;
+  box-shadow: 0 10px 13px -10px rgba(5, 5, 5, 0.5);
 }
 
-.Project h1, .Project h2 {
-  font-weight: bold;
+.columns-2 {
+  grid-column: span 2;
 }
 
-.Project-intro {
-  font-size: large;
+.pipelines {
+  display: flex;
+  justify-content: space-between;
+  height: calc(100% - 3.727rem);
+}
+
+.pipeline {
+  padding: 1.5rem 2rem;
+  border-radius: unset;
+  flex-basis: 100%;
+}
+
+.pipeline:nth-of-type(2) {
+  border-left: 1px solid rgba(55, 55, 45, 0.5);
+}
+
+.columns-2 .pipeline {
+  flex-basis: 50%;
+}
+
+@media screen and (max-width: 750px) {
+  .columns-2 {
+    grid-column: span 1;
+  }
+
+  .pipelines {
+    flex-direction: column;
+  }
 }

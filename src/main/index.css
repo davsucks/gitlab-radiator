@@ -1,9 +1,70 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+
 * {
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  padding: 5px 20px;
-  font-family: sans-serif;
+  padding: 1.5rem;
+  color: white;
+  font-family: 'Montserrat', Verdana, Geneva, Tahoma, Segoe, sans-serif;
+  min-height: 100vh;
+  min-width: 100vw;
+  background: radial-gradient(farthest-corner at 0px 100%, rgb(225, 225, 220), rgb(245, 245, 255));
+}
+
+.wrapper {
+  display: grid;
+  grid-template: auto / 1fr 1fr 1fr;
+  grid-gap: 1rem 0.75rem;
+  grid-auto-flow: row dense;
+}
+
+@media screen and (max-width: 1600px) {
+  .wrapper {
+    grid-template: auto / 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .wrapper {
+    grid-template: auto / 1fr;
+  }
+}
+
+h1, h2, h3, h4 {
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 0;
+  padding: 1.025rem 0;
+  border-bottom: 1px solid rgb(55, 55, 45);
+  color: rgb(55, 55, 45);
+  font-size: 1.802rem;
+  font-weight: 700;
+  letter-spacing: 0.125em;
+  background-color: white;
+}
+
+h2 {
+  margin: 0 0 0.35em;
+  font-size: 1.424rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+}
+
+h3, h4 {
+  margin: 0 0 0.55em;
+  font-size: 1.125rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+}
+
+p {
+  margin: 0 0 0.75rem;
+  line-height: 1.65;
+  font-weight: 400;
+  letter-spacing: 0.05em;
 }
