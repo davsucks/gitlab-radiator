@@ -56,14 +56,14 @@ describe('<Project />', () => {
   test('renders a pipeline per ref', () => {
     jest.useFakeTimers();
 
-    const badgeForMaster = (
+    const pipelineDivForMaster = (
       <div key={1} className={`pipeline succeeded`}>
         <h2>master</h2>
         <h4>Jane Doe</h4>
         <p>Foo</p>
       </div>
     );
-    const badgeForDevelop = (
+    const pipelineDivForDevelop = (
       <div key={2} className={`pipeline failed`}>
         <h2>develop</h2>
         <h4>John Doe</h4>
@@ -72,6 +72,8 @@ describe('<Project />', () => {
     );
     const wrapper = mount(ProjectJsx);
 
+    expect(wrapper.contains(pipelineDivForMaster)).toBeTruthy();
+    expect(wrapper.contains(pipelineDivForDevelop)).toBeTruthy();
     expect(wrapper.find('.pipeline').length).toBe(2);
   });
 
