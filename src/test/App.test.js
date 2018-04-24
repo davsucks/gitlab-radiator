@@ -4,7 +4,6 @@
 
 import React from 'react';
 import { shallow } from 'enzyme';
-import { Row } from 'reactstrap';
 import { App, Project } from '../main';
 
 describe('<App />', () => {
@@ -28,6 +27,6 @@ describe('<App />', () => {
   });
 
   test('renders the projects in a row', () => {
-    expect(wrapper.find(Row).length).toBe(1);
+    expect(wrapper.find('.wrapper').length).toBe(1);
   });
 });
