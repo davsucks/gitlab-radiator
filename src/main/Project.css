@@ -1,17 +1,38 @@
-.Project {
-  text-align: center;
-  border: 5px solid black;
-  border-radius: 10px;
+.project {
   overflow: hidden;
-  margin: 5px;
-  padding: 0;
-  padding-top: 5px;
+  text-align: center;
+  border: 1px solid rgb(230, 230, 225);
+  border-radius: .5rem;
+  box-shadow: 0px 5px 25px -15px rgb(25, 25, 25);
 }
 
-.Project h1, .Project h2 {
-  font-weight: bold;
+.columns-2 {
+  grid-column: span 2;
 }
 
-.Project-intro {
-  font-size: large;
+.pipelines {
+  display: flex;
+  justify-content: space-between;
+  height: calc(100% - 3.727rem);
+}
+
+.pipeline {
+  padding: 1rem 5vw;
+  border-radius: unset;
+  flex-basis: 100%;
+  border: 1px solid rgba(230, 230, 225, 0.25);
+}
+
+.columns-2 .pipeline {
+  flex-basis: 50%;
+}
+
+@media screen and (max-width: 750px) {
+  .columns-2 {
+    grid-column: span 1;
+  }
+
+  .pipelines {
+    flex-direction: column;
+  }
 }
