@@ -43,9 +43,7 @@ describe('<Project />', () => {
 
   const ProjectJsx = <Project {...props} />;
 
-  beforeEach(() => {
-    fetchLatestPipelinesWithCommits.mockImplementation(() => syncPromiseOf(pipelines));
-  });
+  beforeEach(() => fetchLatestPipelinesWithCommits.mockImplementation(() => syncPromiseOf(pipelines)));
 
   afterAll(() => jest.resetAllMocks());
 
@@ -58,8 +56,24 @@ describe('<Project />', () => {
   test('renders a pipeline per ref', () => {
     jest.useFakeTimers();
 
+    const pipelineDivForMaster = (
+      <div key={1} className={`pipeline succeeded`}>
+        <h2>master</h2>
+        <h4>Jane Doe</h4>
+        <p>Foo</p>
+      </div>
+    );
+    const pipelineDivForDevelop = (
+      <div key={2} className={`pipeline failed`}>
+        <h2>develop</h2>
+        <h4>John Doe</h4>
+        <p>Bar</p>
+      </div>
+    );
     const wrapper = mount(ProjectJsx);
 
+    expect(wrapper.contains(pipelineDivForMaster)).toBeTruthy();
+    expect(wrapper.contains(pipelineDivForDevelop)).toBeTruthy();
     expect(wrapper.find('.pipeline').length).toBe(2);
   });
 
