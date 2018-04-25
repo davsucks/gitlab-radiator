@@ -10,7 +10,7 @@ It's exactly what it sounds like 🤷
 * `yarn`
 * `yarn test`
 * Don't panic! You're missing configuration, so the tests should fail
-  * Create a `config.json` file in `<repo root>/main`
+  * Create a `config.json` file in `<repo root>/src`
   * The failing tests should guide you in generating the correct config
   * The `refs` field is optional. If you set it, the latest pipeline for every git branch in your repo will be shown. If you don't, we'll just show the lastest pipeline that ran, regardless of branch.
   ```JSON
